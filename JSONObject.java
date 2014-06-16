@@ -39,7 +39,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.ResourceBundle;
 import java.util.Set;
-
+import java.util.concurrent.ConcurrentHashMap;
 /**
  * A JSONObject is an unordered collection of name/value pairs. Its external
  * form is a string wrapped in curly braces with colons between the names and
@@ -152,7 +152,7 @@ public class JSONObject {
      * Construct an empty JSONObject.
      */
     public JSONObject() {
-        this.map = new HashMap<String, Object>();
+        this.map = new ConcurrentHashMap<String, Object>();
     }
 
     /**
@@ -243,7 +243,7 @@ public class JSONObject {
      * @throws JSONException
      */
     public JSONObject(Map<String, Object> map) {
-        this.map = new HashMap<String, Object>();
+        this.map = new ConcurrentHashMap<String, Object>();
         if (map != null) {
             Iterator<Entry<String, Object>> i = map.entrySet().iterator();
             while (i.hasNext()) {
